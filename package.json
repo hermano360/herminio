@@ -15,5 +15,9 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/hermano360/herminio.git"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "minimatch": "^3.0.3"
   }
 }
