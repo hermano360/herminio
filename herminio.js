@@ -1,4 +1,5 @@
-var express = require('express');
+var express = require('express'),
+	aboutFields = require('./lib/aboutFields.js');
 
 var app = express();
 
@@ -15,32 +16,16 @@ app.set('port', process.env.PORT || 3000);
 // this is where you put images, CSS files, client JS files
 app.use(express.static(__dirname + '/public'));
 
-var interests = [
-	"Building software that promotes education",
-	"Staying active with Crossfit, running, and hiking",
-	"Enjoying art and history museums"
-]
-
-var projects = [
-	'Bypass-Safer walking app',
-	'Alexa-Translating and Smart Home',
-	'Raspberry Pi-Various'
-]
-
-var skills = [
-	'Javascript - Node, Express',
-	'CSS - Bootstrap',
-	'Machine Learning - Tensorflow'
-]
 
 app.get('/', function(req,res){
 	res.render('home');
 });
 app.get('/about', function(req,res){
-	var randomInterest = interests[Math.floor(Math.random()*interests.length)];
-	var randomSkill = skills[Math.floor(Math.random()*skills.length)];
-	var randomProject = projects[Math.floor(Math.random()*projects.length)];
-	res.render('about',{ interest:randomInterest, project: randomProject, skill:randomSkill});
+	res.render('about',{ 
+		interest:aboutFields.getItem('interests'), 
+		project: aboutFields.getItem('projects'), 
+		skill:aboutFields.getItem('skills')
+	});
 });
 app.get('/contact', function(req,res){
 	res.render('contact');
