@@ -1,0 +1,11 @@
+{
+  "name": "personalsite",
+  "version": "1.0.0",
+  "description": "first attempt to make personal landing page",
+  "main": "herminio.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Herminio Garcia",
+  "license": "ISC"
+}
