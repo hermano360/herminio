@@ -4,7 +4,18 @@ var express = require('express'),
 var app = express();
 
 // set up handlebars view engine
-var handlebars = require('express-handlebars').create({defaultLayout:'main'});
+var handlebars = require('express-handlebars')
+	.create({
+		defaultLayout:'main',
+    	helpers: {
+        	section: function(name, options){
+           		if(!this._sections) this._sections = {};
+            	this._sections[name] = options.fn(this);
+            	return null;
+        	}
+    	}
+    });
+    
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
@@ -16,19 +27,32 @@ app.set('port', process.env.PORT || 3000);
 // this is where you put images, CSS files, client JS files
 app.use(express.static(__dirname + '/public'));
 
+app.use(function(req,res,next){
+	res.locals.showTests = app.get('env') !== 'production' && req.query.test === '1';
+	next();
+});
+
 
 app.get('/', function(req,res){
-	res.render('home');
+	res.render('home', {
+		pageTestScript: '/qa/tests-home.js'
+	});
 });
+
+
+
 app.get('/about', function(req,res){
 	res.render('about',{ 
 		interest:aboutFields.getItem('interests'), 
 		project: aboutFields.getItem('projects'), 
-		skill:aboutFields.getItem('skills')
+		skill:aboutFields.getItem('skills'),
+		pageTestScript: '/qa/tests-about.js'
 	});
 });
 app.get('/contact', function(req,res){
-	res.render('contact');
+	res.render('contact', {
+		pageTestScript: '/qa/tests-contact.js'
+	});
 });
 
 // custom 404 page
@@ -45,4 +69,4 @@ app.use(function(err,req,res,next){
 
 app.listen(app.get('port'), function(){
 	console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.');
-})
+});

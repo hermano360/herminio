@@ -1,1 +1,16 @@
 <h1>Contact Page</h1>
+<form>
+	<input type="hidden" name="referrer">
+	Name: <input type="text" id="fieldName" name="name"><br>
+	Email: <input type="email" name="email"><br>
+	<input type="submit" value="Submit">
+</form>
+
+{{#section 'jquery'}}
+	<script>
+		$(document).ready(function(){
+			$('input[name="referrer"]').val(document.referrer);
+		});
+	</script>
+{{/section}}
+<a href="/idkcontact">contact error</a>
