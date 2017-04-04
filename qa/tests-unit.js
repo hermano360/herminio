@@ -14,4 +14,6 @@ suite('Make sure you are getting values on the about page', function(){
 		expect(typeof aboutFields.getItem('interests') === 'string');
 	});
 
-})
+
+
+});

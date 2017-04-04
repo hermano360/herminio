@@ -3,6 +3,8 @@ var express = require('express'),
 
 var app = express();
 
+
+
 // set up handlebars view engine
 var handlebars = require('express-handlebars')
 	.create({
@@ -20,6 +22,12 @@ app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
 app.set('port', process.env.PORT || 3000);
+
+var tours = [
+				{id:0,name:'Hood River', price:99.99},
+				{id:1,name:'Wabash River', price:199.99},
+				{id:2,name:'Los Angeles River', price:299.99}
+			];
 
 // static middleware allows you to designate 1 or more
 // directories as containing static resources that are simply
@@ -55,16 +63,29 @@ app.get('/contact', function(req,res){
 	});
 });
 
-// custom 404 page
-app.use(function(req,res){
-	res.status(404);
-	res.render('404');
+app.get('/tour', function(req,res,next){
+	res.json(tours);
+});
+
+app.get('/tour/:id', function(req,res,next){
+	var returnArray = tours.filter(function(element){ return element.id === parseInt(req.params.id);});
+	if(returnArray.length){
+		res.json(tours.filter(function(element){ return element.id === parseInt(req.params.id);})[0]);
+	} else {
+		next();
+	}
 });
 
 // custom 500 page
 app.use(function(err,req,res,next){
 	console.error(err.stack);
 	res.status(500).render('500');
+});
+
+// custom 404 page
+app.use(function(req,res){
+	res.status(404);
+	res.render('404');
 });
 
 app.listen(app.get('port'), function(){
