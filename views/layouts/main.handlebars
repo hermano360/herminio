@@ -1,48 +1,95 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
 	<title>Herminio Garcia</title>
+
+	<link href="/css/normalize.css" rel="stylesheet">
 
 	{{!-- this is asking if showtests exists as an object within the res.locals object in the node file --}}
 	{{!-- if it does, then include the css involved with the testing framework --}}
 	{{#if showTests}}
-		<link rel="stylesheet" href="/vendor/mocha.css">
+	<link rel="stylesheet" href="/vendor/mocha.css">
 	{{/if}}
-	<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+	<!-- Bootstrap Core CSS -->
+	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	{{!-- font-awesome --}}
+	<link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="/css/styles.css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
 </head>
 <body>
-<h1>Personal Page</h1>
 
 
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-main" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar toggle-item"></span>
+					<span class="icon-bar toggle-item"></span>
+					<span class="icon-bar toggle-item"></span>
+				</button>
+				<a class="navbar-brand" id="nav-name" href="/">Herminio Garcia</a>
+			</div> {{!-- navbar-header --}}
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="navbar-collapse-main">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="/portfolio" class="toggle-item">Full Portfolio</a></li>
+					<li><a href="/about" class="toggle-item">About</a></li>
+					<li><a href="/contact" class="toggle-item">Contact</a></li>
+
+				</ul>
+			</li>
+		</ul>
+	</div><!-- /.navbar-collapse -->
+
+
+</div><!-- /.container-fluid -->
+</nav>
 
 {{{body}}}
 
-{{#if showTests}}
-	<div id="mocha"></div>
-	<script src="/vendor/mocha.js"></script>
-	<script src="/vendor/chai.js"></script>
-	<script>
-		mocha.ui('tdd');
-		var assert = chai.assert;
-	</script>
 
-	<script src="/qa/tests-global.js"></script>
-	{{#if pageTestScript}}
-		<script src="{{pageTestScript}}"></script>
-	{{/if}}
-	<script>mocha.run();</script>
+
+{{#if showTests}}
+<div id="mocha"></div>
+<script src="/vendor/mocha.js"></script>
+<script src="/vendor/chai.js"></script>
+<script>
+	mocha.ui('tdd');
+	var assert = chai.assert;
+</script>
+
+<script src="/qa/tests-global.js"></script>
+{{#if pageTestScript}}
+<script src="{{pageTestScript}}"></script>
+{{/if}}
+<script>mocha.run();</script>
 {{/if}}
 
 {{!-- may be good to put this into a partial --}}
-<ul>
-	<li><a href="/">Home</a></li>
-	<li><a href="/about">About</a></li>
-	<li><a href="/contact">Contact</a></li>
-</ul>
+<footer class="footer">
+	<div class="container-fluid text-center">
+		<a href="https://www.facebook.com/herminiog" class="social-buttons" ><i class="fa fa-facebook-official"></i></a>
+		<a href="https://www.linkedin.com/in/herminio-garcia-431b3b40/" class="social-buttons"><i class="fa fa-linkedin-square"></i></a>
+		<a href="https://github.com/hermano360" class="social-buttons"><i class="fa fa-github"></i></a>
+	</div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+
 
 </body>
 </html>

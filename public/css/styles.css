@@ -1,0 +1,147 @@
+
+body {
+	margin-top:0px;
+}
+
+
+
+header, .portfolio, .about {
+	padding-top:50px;
+}
+
+/*------ navbar -------------------------------------------------*/
+.navbar {
+	background-color: #383a3d;
+}
+#nav-name, .navbar-collapse-main, .toggle-item{
+	color: #dedfe0;
+}
+
+
+.navbar-brand:hover, a.toggle-item:hover{
+	color: #333 !important;
+	background-color: #e6e6e6 !important;
+	border-color: #adadad !important;
+}
+
+
+/*------ home -------------------------------------------------*/
+header {
+	background-image: url("/img/homeBackground.jpg");
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position: center center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-ms-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	text-align: center;
+	color: #fff;
+	height:100vh;
+}
+
+header img {
+	margin: 20px;
+	height:205px;
+	border: 2px solid #fff;
+	border-radius: 50%;
+}
+
+header .intro-text {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+header .intro-text .intro-lead-in {
+	font-family: 'Montserrat',"Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-style: bold;
+	font-size: 50px;
+	line-height: 50px;
+	margin-bottom: 30px;
+	color:#fff;
+	background: rgba(56,58,61,1);
+	border: 2px solid #fff;
+}
+header .intro-text .intro-subheader {
+	font-family: 'Montserrat',"Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-style: bold;
+	font-size: 30px;
+	line-height: 30px;
+	margin-bottom: 70px;
+	color:#fff;
+	background: rgba(56,58,61,1);
+	border: 2px solid #fff;
+}
+
+@media only screen and (max-width : 450px) {
+	header .intro-text .intro-subheader {
+		font-size: 20px;
+		line-height: 20px;
+	}
+	header .intro-text .intro-lead-in {
+		font-size: 25px;
+		line-height: 25px;
+	}
+	.resume {
+	font-size: 25px !important;
+	}
+
+	.home-buttons {
+		font-size: 15px !important;
+	}
+}
+
+.home-buttons {
+	border-radius:0;
+	background: rgba(56,58,61,1);
+	padding: 7px 15px;
+	border: 2px solid #fff;
+	font-size: 20px;
+	margin-left: 5px;
+	margin-right: 5px
+}
+.resume {
+	font-size: 35px;
+}
+
+.white-font {
+	color: #fff;
+}
+
+/*------ portfolio -------------------------------------------------*/
+.portfolio-sections {
+
+	text-align: center;
+	margin-bottom: 30px;
+  	height:calc(100% - 150px);
+  	overflow-y:scroll;
+}
+
+.portfolio-entry {
+	margin-bottom: 15px;
+}
+
+
+
+/*------ footer -------------------------------------------------*/
+footer {
+	position:fixed;
+	bottom:0;
+	left:0;
+	width:100%;
+	height:auto;
+	background:transparent;
+	z-index:15;
+	padding:0 50px;
+	line-height:50px;
+}
+
+.social-buttons {
+	color:#383a3d;
+	font-size: 40px;
+	margin:0 10px 0 10px;
+}
+
+.social-buttons:hover {
+	color:#fff;
+}

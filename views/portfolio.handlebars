@@ -1,0 +1,14 @@
+<div class="portfolio container-fluid">
+	<div class="row portfolio-sections" >
+		<div class="panel-heading"><h1>Portfolio</h1></div>
+		<div class="col-sm-12 panel-body" data-spy="scroll">
+				{{#each portfolio}}
+				<div class="col-sm-4 portfolio-entry">
+				<a href="{{this.link}}"><img src="{{this.img}}" alt="{{this.description}} picture">
+				<div>{{this.description}}</div></a>
+				</div>
+				{{/each}}
+			</div>
+
+	</div>
+</div>

@@ -1,5 +1,7 @@
 var express = require('express'),
-	aboutFields = require('./lib/aboutFields.js');
+	aboutFields = require('./lib/aboutFields.js'),
+	portfolio = require('./lib/portfolio.js'),
+	fs = require('fs');
 
 var app = express();
 
@@ -39,6 +41,10 @@ app.use(function(req,res,next){
 	res.locals.showTests = app.get('env') !== 'production' && req.query.test === '1';
 	next();
 });
+app.use(function(req,res,next){
+	res.locals.portfolio = portfolio;
+	next();
+});
 
 
 app.get('/', function(req,res){
@@ -57,9 +63,16 @@ app.get('/about', function(req,res){
 		pageTestScript: '/qa/tests-about.js'
 	});
 });
+
 app.get('/contact', function(req,res){
 	res.render('contact', {
 		pageTestScript: '/qa/tests-contact.js'
+	});
+});
+
+app.get('/portfolio', function(req,res){
+	res.render('portfolio',{
+		portfolio:portfolio //.getPortfolio()
 	});
 });
 
@@ -75,6 +88,9 @@ app.get('/tour/:id', function(req,res,next){
 		next();
 	}
 });
+
+
+app.use(express.static('public'));
 
 // custom 500 page
 app.use(function(err,req,res,next){
